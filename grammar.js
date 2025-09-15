@@ -67,7 +67,7 @@ module.exports = grammar({
     //     "}",
     //   ),
 
-    hash_pair: ($) => seq($.expression, ":", $.expression),
+    // hash_pair: ($) => seq($.expression, ":", $.expression),
 
     function_literal: ($) =>
       seq("fnc", "(", optional($.parameter_list), ")", $.block_statement),
