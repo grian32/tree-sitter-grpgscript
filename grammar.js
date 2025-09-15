@@ -31,7 +31,6 @@ module.exports = grammar({
         $.boolean,
         $.string_literal,
         $.array_literal,
-        $.hash_literal,
         $.function_literal,
         $.if_expression,
         $.call_expression,
@@ -41,7 +40,7 @@ module.exports = grammar({
         $.grouped_expression,
       ),
 
-    identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    identifier: ($) => /[a-zA-Z_][a-zA-Z_]*/,
 
     integer_literal: ($) => /\d+/,
 
@@ -59,14 +58,14 @@ module.exports = grammar({
         "]",
       ),
 
-    hash_literal: ($) =>
-      seq(
-        "{",
-        optional(
-          seq($.hash_pair, repeat(seq(",", $.hash_pair)), optional(",")),
-        ),
-        "}",
-      ),
+    // hash_literal: ($) =>
+    //   seq(
+    //     "{",
+    //     optional(
+    //       seq($.hash_pair, repeat(seq(",", $.hash_pair)), optional(",")),
+    //     ),
+    //     "}",
+    //   ),
 
     hash_pair: ($) => seq($.expression, ":", $.expression),
 
@@ -91,9 +90,9 @@ module.exports = grammar({
       prec.left(
         8,
         seq(
-          $.expression,
+          field("fnc", $.expression),
           "(",
-          optional($.argument_list),
+          field("arguments", optional($.argument_list)),
           ")",
           optional($.block_statement),
         ),
