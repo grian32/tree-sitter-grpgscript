@@ -275,23 +275,6 @@
         }
       ]
     },
-    "hash_pair": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "expression"
-        },
-        {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "expression"
-        }
-      ]
-    },
     "function_literal": {
       "type": "SEQ",
       "members": [
