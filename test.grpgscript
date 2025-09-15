@@ -1,0 +1,40 @@
+var fib = fnc(n) {
+		if (n < 2) {
+			n
+		} else {
+			fib(n - 1) + fib(n - 2)
+		}
+};
+
+var makeAdder = fnc(x) {
+	fnc(y) { x + y; };
+};
+
+var addTwo = makeAdder(2);
+var addThree = makeAdder(3);
+
+var x = addTwo(1);
+
+fib(10) + x;
+
+var arr = [1,2,3,4];
+
+fib(arr[3]) + 3;
+
+var map = {"hey": 5, "bye": 6}
+
+var getMap = fnc(bool) {
+	if (bool) {
+		return map["hey"]
+	} else {
+	    return map["bye"]
+	}
+}
+
+fib(getMap(true)) + fib(getMap(false))
+
+var testDsl = fnc(a, b) {
+    return a + b();
+}
+
+testDsl(3, fnc () { return 4; });
